@@ -1,0 +1,20 @@
+version: '3'
+services:
+  master:
+    image: pwcracker-server:latest
+    ports:
+    - "8080:8080"
+    links:
+    - redis
+    - rabbit
+  redis:
+    hostname: "redis"
+    image: redis
+    ports:
+      - "6379:6379"
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "8081:15672"
+    hostname: "rabbit"
